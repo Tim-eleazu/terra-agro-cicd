@@ -1,0 +1,9 @@
+variable "vpc" {}
+variable "region" {}
+variable "vpc_cidr" {}
+variable "tac_public_subnet" {}
+variable "rt_cidr" {}
+variable "tac_eks_role" {}
+variable "tac_eks_node_role" {}
+variable "tac_eks_cluster" {}
+variable "tac-node-group" {}
