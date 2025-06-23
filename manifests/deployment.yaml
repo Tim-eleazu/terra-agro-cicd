@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-admin-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vue-admin
+  template:
+    metadata:
+      labels:
+        app: vue-admin
+    spec:
+      containers:
+      - name: vue-admin
+        image: tdev11/test-image:latest
+        ports:
+        - containerPort: 8080
