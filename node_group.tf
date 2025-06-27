@@ -4,22 +4,9 @@ data "aws_eks_cluster_auth" "cluster_auth" {
 
 
 provider "kubernetes" {
-  host                   = aws_eks_cluster.tac-cluster.endpoint
-  cluster_ca_certificate = base64decode(aws_eks_cluster.tac-cluster.certificate_authority[0].data)
+  host                   = aws_eks_cluster.tac_eks_cluster.endpoint
+  cluster_ca_certificate = base64decode(aws_eks_cluster.tac_eks_cluster.certificate_authority[0].data)
   token                  = data.aws_eks_cluster_auth.cluster_auth.token
-}
-
-resource "aws_eks_cluster" "tac-cluster" {
-  name     = var.tac_eks_cluster
-  role_arn = aws_iam_role.eks_cluster_role.arn
-
-  vpc_config {
-    subnet_ids = aws_subnet.tac_public_subnet.*.id
-  }
-
-  tags = {
-    Name = var.tac_eks_cluster
-  }
 }
 
 resource "aws_eks_node_group" "main" {
@@ -34,7 +21,7 @@ resource "aws_eks_node_group" "main" {
     min_size     = 1
   }
 
-  depends_on = [aws_eks_cluster.tac-cluster]
+  depends_on = [aws_eks_cluster.tac_eks_cluster]
 
   tags = {
     Name = var.tac-node-group

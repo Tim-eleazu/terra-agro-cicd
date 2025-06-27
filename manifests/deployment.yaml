@@ -18,3 +18,5 @@ spec:
         image: tdev11/test-image:latest
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+        - name: my-secret

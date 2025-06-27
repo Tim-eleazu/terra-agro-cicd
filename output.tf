@@ -10,5 +10,5 @@ output "argocd_server_load_balancer" {
 
 output "eks_connect" {
   description = "Command to connect kubectl to EKS"
-  value       = "aws eks --region ${var.region} update-kubeconfig --name ${aws_eks_cluster.tac-eks-cluster.name}"
+  value       = "aws eks --region ${var.region} update-kubeconfig --name ${aws_eks_cluster.tac_eks_cluster.name}"
 }
