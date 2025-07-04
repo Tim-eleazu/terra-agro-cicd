@@ -1,8 +1,8 @@
-# terra-agro-cicd
+# Using ArgoCD & Terraform to Manage Kubernetes Cluster
 
-# Vue Admin Web App (Kubernetes + ArgoCD)
+### Vue Admin Web App (Kubernetes + ArgoCD)
 
-This project contains the Kubernetes deployment configuration for the Vue Admin frontend application. It is configured for GitOps using ArgoCD.
+This project contains the Kubernetes deployment configuration for the Vue Admin frontend application. It is configured for GitOps using ArgoCD. The application is found at `/vue-web-app`
 
 ## 🚀 Deployment Overview
 The Vue app is containerized and deployed to an EKS cluster via Kubernetes manifests located in the `manifests/` directory. ArgoCD watches this directory and automatically syncs changes to the cluster.
@@ -16,11 +16,11 @@ terraform apply -auto-approve
 ```
 
 ## Outputs
->- **argocd_initial_admin_secret =** "kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode"
+- `argocd_initial_admin_secret =** "kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode"`
 
->- **argocd_server_load_balancer =** "a53a6bf4abebe46f79da6179425ca5f4-7d359c1121a50305.elb.eu-west-1.amazonaws.com"
+- `argocd_server_load_balancer = "a53a6bf4abebe46f79da6179425ca5f4-7d359c1121a50305.elb.eu-west-1.amazonaws.com`
 
->- **eks_connect =** "aws eks --region eu-west-1 update-kubeconfig --name main-eks-cluster"
+- `eks_connect = "aws eks --region eu-west-1 update-kubeconfig --name main-eks-cluster"`
 
 ## Connect to k8 Cluster
 ```
